@@ -1,0 +1,171 @@
+<section class="intro" style="height: 700px">
+    <div class="bg-image h-100" style="background-image: url('https://th.bing.com/th/id/R.5ed709b1a66c24b70aa3fa48dc16775a?rik=Sf9CenYZvvXzLw&riu=http%3a%2f%2f4.bp.blogspot.com%2f-dpiOcLkfnwU%2fTVQZ-PKh0lI%2fAAAAAAAACew%2fJ93PveGpjO4%2fs1600%2fTree%2bShadows.jpg&ehk=IlNrvlTROGsPqC%2fJ9VfCZmewYB%2bF%2bMnANJzICGgWdhw%3d&risl=&pid=ImgRaw&r=0)">
+
+
+
+        <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,.35);     background: rgba(24, 24, 16, .2);
+    border-radius: 2em;
+    backdrop-filter: blur(25px);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    background-clip: padding-box;
+    box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);">
+
+
+            
+            <div class="container" style="background-color: aliceblue">
+
+                <h3 class="jumbotron-heading" style="color: black; text-align: center;" >Reservation for
+                    <th:block th:if="${#request.getRemoteUser() != null}" th:text="${#request.getRemoteUser()}"></th:block>
+                </h3>
+                <div th:if="${hasError}">
+                    <h5 class="text-center text-danger" th:text="${error}"></h5>
+                </div>
+
+                <div class="row justify-content-center" style="background-color: aliceblue">
+
+                    <div class="col-12" style="background-color: aliceblue">
+
+                        <div class="table-responsive bg-white" data-mdb-perfect-scrollbar="true" style="position: relative; height: 200px;">
+
+                            <table class="table" style=" text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden; background-color: aliceblue">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Tour</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Guide</th>
+                                    <th scope="col">Terrain</th>
+                                    <th scope="col">Condition</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                <tr th:each="tour : ${tours}" class="cart-item">
+                                    <td th:text="${tour.getName()}"></td>
+                                    <td th:text="${tour.getPrice()}"></td>
+                                    <td th:text="${tour.getGuide() != null} ? ${tour.getGuide().getName()} : 'No Guide'"></td>
+                                    <td th:text="${tour.getTerrain() != null} ? ${tour.getTerrain().getName()} : 'No Terrain'"></td>
+                                    <td th:text="${tour.getCondition()}"></td>
+                                </tr>
+                                </tr>
+                                <tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--                                    <th scope="row" style="color: #666666;  text-overflow: ellipsis;-->
+<!--    white-space: nowrap;-->
+<!--    overflow: hidden;">Sonya Frost</th>-->
+<!--                                    <td>Software Engineer</td>-->
+<!--                                    <td>2008/12/13</td>-->
+<!--                                    <td>2021/03/08</td>-->
+<!--                                    <td>sfrost34@example.com</td>-->
+<!--                                    <td>23</td>-->
+<!--                                    <td>Edinburgh</td>-->
+<!--                                    <td>$103,600</td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <th scope="row" style="color: #666666;  text-overflow: ellipsis;-->
+<!--    white-space: nowrap;-->
+<!--    overflow: hidden;">Jena Gaines</th>-->
+<!--                                    <td>Office Manager</td>-->
+<!--                                    <td>2008/12/19</td>-->
+<!--                                    <td>2021/03/08</td>-->
+<!--                                    <td>jgaines75@example.com</td>-->
+<!--                                    <td>30</td>-->
+<!--                                    <td>London</td>-->
+<!--                                    <td>$90,560</td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <th scope="row" style="color: #666666;  text-overflow: ellipsis;-->
+<!--    white-space: nowrap;-->
+<!--    overflow: hidden;">Quinn Flynn</th>-->
+<!--                                    <td>Support Lead</td>-->
+<!--                                    <td>2013/03/03</td>-->
+<!--                                    <td>2021/03/08</td>-->
+<!--                                    <td>qflyn09@example.com</td>-->
+<!--                                    <td>22</td>-->
+<!--                                    <td>Edinburgh</td>-->
+<!--                                    <td>$342,000</td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <th scope="row" style="color: #666666;  text-overflow: ellipsis;-->
+<!--    white-space: nowrap;-->
+<!--    overflow: hidden;">Charde Marshall</th>-->
+<!--                                    <td>Regional Director</td>-->
+<!--                                    <td>2008/10/16</td>-->
+<!--                                    <td>2021/03/08</td>-->
+<!--                                    <td>cmarshall28@example.com</td>-->
+<!--                                    <td>36</td>-->
+<!--                                    <td>San Francisco</td>-->
+<!--                                    <td>$470,600</td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <th scope="row" style="color: #666666;  text-overflow: ellipsis;-->
+<!--    white-space: nowrap;-->
+<!--    overflow: hidden;">Haley Kennedy</th>-->
+<!--                                    <td>Senior Marketing Designer</td>-->
+<!--                                    <td>2012/12/18</td>-->
+<!--                                    <td>2021/03/08</td>-->
+<!--                                    <td>hkennedy63@example.com</td>-->
+<!--                                    <td>43</td>-->
+<!--                                    <td>London</td>-->
+<!--                                    <td>$313,500</td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <th scope="row" style="color: #666666;  text-overflow: ellipsis;-->
+<!--    white-space: nowrap;-->
+<!--    overflow: hidden;">Tatyana Fitzpatrick</th>-->
+<!--                                    <td>Regional Director</td>-->
+<!--                                    <td>2010/03/17</td>-->
+<!--                                    <td>2021/03/08</td>-->
+<!--                                    <td>tfitzpatrick00@example.com</td>-->
+<!--                                    <td>19</td>-->
+<!--                                    <td>Warsaw</td>-->
+<!--                                    <td>$385,750</td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <th scope="row" style="color: #666666;  text-overflow: ellipsis;-->
+<!--    white-space: nowrap;-->
+<!--    overflow: hidden;">Jason Cox</th>-->
+<!--                                    <td>Web Developer</td>-->
+<!--                                    <td>2017/10/16</td>-->
+<!--                                    <td>2021/03/08</td>-->
+<!--                                    <td>jcox96@example.com</td>-->
+<!--                                    <td>32</td>-->
+<!--                                    <td>New York</td>-->
+<!--                                    <td>$390,400</td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <th scope="row" style="color: #666666;  text-overflow: ellipsis;-->
+<!--    white-space: nowrap;-->
+<!--    overflow: hidden;">Christian Perkins</th>-->
+<!--                                    <td>Sale Specialist</td>-->
+<!--                                    <td>2013/12/18</td>-->
+<!--                                    <td>2021/03/08</td>-->
+<!--                                    <td>cperkins10@example.com</td>-->
+<!--                                    <td>40</td>-->
+<!--                                    <td>Paris</td>-->
+<!--                                    <td>$240,800</td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <th scope="row" style="color: #666666;  text-overflow: ellipsis;-->
+<!--    white-space: nowrap;-->
+<!--    overflow: hidden;">Emily Wheeler</th>-->
+<!--                                    <td>Junior Marketing Analyst</td>-->
+<!--                                    <td>2020/03/17</td>-->
+<!--                                    <td>2021/03/08</td>-->
+<!--                                    <td>ewheeler07@example.com</td>-->
+<!--                                    <td>20</td>-->
+<!--                                    <td>New York</td>-->
+<!--                                    <td>$85,620</td>-->
+<!--                                </tr>-->

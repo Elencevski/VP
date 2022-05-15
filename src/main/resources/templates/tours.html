@@ -1,0 +1,88 @@
+<section class="intro" style="height: 700px">
+<!--    <section class="jumbotron text-center" style="background-color: aliceblue" >-->
+<!--        <div class="container">-->
+<!--            <h1 class="jumbotron-heading">Scoutster</h1>-->
+<!--            <h3 class="jumbotron-heading">All tours</h3>-->
+<!--        </div>-->
+<!--    </section>-->
+    <div class="bg-image h-100" style="background-image: url('https://th.bing.com/th/id/R.5ed709b1a66c24b70aa3fa48dc16775a?rik=Sf9CenYZvvXzLw&riu=http%3a%2f%2f4.bp.blogspot.com%2f-dpiOcLkfnwU%2fTVQZ-PKh0lI%2fAAAAAAAACew%2fJ93PveGpjO4%2fs1600%2fTree%2bShadows.jpg&ehk=IlNrvlTROGsPqC%2fJ9VfCZmewYB%2bF%2bMnANJzICGgWdhw%3d&risl=&pid=ImgRaw&r=0)">
+        <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,.35);     background: rgba(24, 24, 16, .2);
+    border-radius: 2em;
+    backdrop-filter: blur(25px);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    background-clip: padding-box;
+    box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);">
+
+
+            <div class="container" style="background-color: aliceblue">
+                <div class="row justify-content-center" style="background-color: aliceblue" >
+                    <div class="col-12 " th:if="${tours.size() > 0}" style="background-color:aliceblue">
+                        <div class="table-responsive bg-white" data-mdb-perfect-scrollbar="true" style="position: relative; height: 350px;">
+
+                            <table class="table" style=" text-overflow: ellipsis;
+                             white-space: nowrap;
+                             overflow: hidden; background-color: aliceblue">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Tour name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Guide</th>
+                                    <th scope="col">Terrain</th>
+                                    <th scope="col">Condition</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="tour : ${tours}" class="tour">
+                                    <td th:text="${tour.getName()}"></td>
+                                    <td th:text="${tour.getPrice()}"></td>
+                                    <td th:text="${tour.getGuide() != null}
+                            ? ${tour.getGuide().getName()} : 'No Guide'"></td>
+                                    <td th:text="${tour.getTerrain() != null}
+                            ? ${tour.getTerrain().getName()} : 'No Terrain'"></td>
+                                    <td th:text="${tour.getCondition()}"></td>
+                                    <td class="text-right">
+                                        <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                            <form th:action="@{'/tours/delete/{id}' (id=${tour.getId()})}"
+                                                  th:method="DELETE">
+                                                <button type="submit"
+                                                        class="btn btn-sm btn-danger delete-tour">
+                                                    <i class="fa fa-trash">Delete</i>
+                                                </button>
+                                            </form>
+                                        </th:block>
+                                        <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                            <a th:href="@{'/tours/edit-form/{id}' (id=${tour.getId()})}"
+                                               class="btn btn-sm btn-info edit-tours">
+                                                <i class="fa fa-trash">Edit</i>
+                                            </a>
+                                        </th:block>
+                                        <form th:action="@{'/shopping-cart/add-tour/{id}' (id=${tour.getId()})}"
+                                              th:method="POST"
+                                              sec:authorize="isAuthenticated()">
+                                            <button type="submit"
+                                                    class="btn btn-sm btn-success cart-tour">
+                                                <i class="fa fa-trash">Reserve Tour</i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12" sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a href="/tours/add-form" class="btn btn-block btn-dark add-tour-btn">
+                                    Add new tour
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
